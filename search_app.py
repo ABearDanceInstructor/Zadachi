@@ -54,6 +54,30 @@ class MapParams(object):
             self.zoom += 1
         elif event.key == 281 and self.zoom > 2:
             self.zoom -= 1
+        elif event.key == 273:
+            self.lat += LAT_STEP
+        elif event.key == 274:
+            self.lat -= LAT_STEP
+        elif event.key == 275:
+            self.lon += LON_STEP
+        elif event.key == 276:
+            self.lon -= LON_STEP
+        if self.lon > 180:
+            self.lon -= 360
+        elif self.lon < -180:
+            self.lon += 360
+        if self.lat > 180:
+            self.lat -= 360
+        elif self.lat < -180:
+            self.lat += 360
+        elif event.key == 49:
+            self.type = "map"
+        elif event.key == 50:
+            self.type = "sat"
+        elif event.key == 51:
+            self.type = "sat,skl"
+
+
 
     # Преобразование экранных координат в географические.
     def screen_to_geo(self, pos):
